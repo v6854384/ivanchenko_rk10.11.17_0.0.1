@@ -1,39 +1,29 @@
 #include <iostream>
-#include <string>
-#include <limits>
 using namespace std;
-int main() {
-  string length;
-  string array;
-  string result;
-  string count;
-  string part1, part2;
-  int length_int;
-  int counter = 0;
-  int length1 = 0;
-  cin >> length;
-  cin.ignore(numeric_limits<streamsize>::max(), '\n');
-  getline(cin, array);
-  length_int = atoi(length.c_str());
-  for (int i = 0; i < array.length(); i++) {
-    if (array[i] == ' ') counter++;
-  }
-  if (length_int != (counter + 1))
-    cout << " An error has occurred while reading" << endl;
-  else {
-    cin >> count;
-    if (atoi(count.c_str()) == 0) {
-      cout << " An error has occurred while reading" << endl;
-    } else {
-      length1 = (length_int - atoi(count.c_str())) * 2;
-      for (int i = 0; i < length1; i++) {
-        part2 = part2 + array[i];
-      }
-      for (int i = length1; i < array.length(); i++) {
-        part1 = part1 + array[i];
-      }
-      result = part1 + ' ' + part2;
-      cout << result << endl;
+
+int main()
+{
+    int i, n, x;
+    cin >> n;
+    if (n <= 0)
+        return 0;
+    int a[n];
+    for (i = 0; i < n; i++) {
+        cin >> a[i];
     }
-  }
+    cin >> x;
+    int b[x - 1], c[n - x - 1];
+    for (i = 0; i < x; i++) {
+        b[i] = a[i];
+    }
+    for (i = 0; i < n - x; i++) {
+        c[i] = a[i + x];
+    }
+    for (i = 0; i < n - x; i++) {
+        cout << c[i] << " ";
+    }
+    for (i = 0; i < x; i++) {
+        cout << b[i] << " ";
+    }
+    return 0;
 }
